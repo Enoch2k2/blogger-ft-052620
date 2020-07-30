@@ -1,0 +1,15 @@
+<h1>Blogs</h1>
+
+<%= form_tag(blogs_path, method: 'get') do %>
+  <%= text_field_tag :term, nil,  id: "Search", placeholder: "enter search term" %>
+
+  <%= submit_tag "Search"%>
+<% end %>
+
+<% @blogs.each do |blog| %>
+  <div>
+    <h3><%= blog.title %></h3>
+    <p><%= blog.content %></p>
+    <p><%= blog.published_date %></p>
+  </div>
+<% end %>
