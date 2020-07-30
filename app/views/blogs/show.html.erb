@@ -1,6 +1,0 @@
-<h1><%= @blog.title %></h1>
-<p>Published Date: <%= @blog.published_date ? @blog.published_date : "Not Published" %></p>
-<p><%= @blog.content %></p>
-
-<p><%= link_to "Edit", edit_blog_path(@blog) %></p>
-<p><%= link_to "Delete", blog_path(@blog), method: "delete" %></p>
