@@ -4,3 +4,9 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+desc "Migrates both dev and testing dbs"
+task :migrations do
+  puts "Migrating both development and testing databases...."
+  system("rails db:migrate && rails db:migrate RAILS_ENV=test")
+end

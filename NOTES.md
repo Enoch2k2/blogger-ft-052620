@@ -1,13 +1,25 @@
-# Models & RESTful Routes Agenda
+# User Authentication
 
-- Advanced Scope Methods
-  - recent published blogs - x
-  - published blogs - x
-  - not_published blogs - x
-  - sorted_published_blogs - x
-  - sorted_non_published_blogs - x
-  - search
+## Without Devise
+- User Model + Controller + Routes
 
-- RestFul Routes
-  - What are the 7 different restful routes?
-  - implement Index, Show
+# User
+- email
+- password_digest
+
+- Sessions Controller
+
+Get Routes
+- GET /login, to: sessions new
+- POST /login to: sessions create
+- GET /signup to: users new
+- POST /signup to: users create
+- DELETE /logout to: sessions destroy
+
+DEPENDECY - BCRYPT
+
+## With Devise
+
+
+
+## Nested Routes (Hopefully????, nah definitely Nested Routes, we got this!)
