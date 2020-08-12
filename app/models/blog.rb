@@ -1,4 +1,5 @@
 class Blog < ApplicationRecord
+  belongs_to :user
 
   scope :published, -> { where.not(published_date: nil) }
   scope :not_published, -> { where(published_date: nil) }
@@ -10,6 +11,9 @@ class Blog < ApplicationRecord
   #   where.not(published_date: nil)
   # end
 
+
+
   validates_presence_of :title, :content
   validates_uniqueness_of :title
+
 end

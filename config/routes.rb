@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
   root to: "static#home"
-  resources :blogs
+  
+  # resources :users
+
+  get "/signup", to: "users#new", as: "signup" # signup_path or signup_url
+  post "/signup", to: "users#create"
+
+  get "/login", to: "sessions#new", as: "login"
+  post "/login", to: "sessions#create"
+
+  delete "/logout", to: "sessions#destroy", as: "logout"
+
+  resources :users, only: [] do
+    resources :blogs
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # # index

@@ -2,10 +2,11 @@ class BlogsController < ApplicationController
   before_action :set_blog, except: [:index, :new, :create]
 
   def index
+    @user = User.find_by_id(params[:user_id])
     if params[:term]
-      @blogs = Blog.search(params[:term])
+      @blogs = @user.blogs.search(params[:term])
     else
-      @blogs = Blog.sorted_published_blogs
+      @blogs = @user.blogs.sorted_published_blogs
     end
   end
 
@@ -17,10 +18,10 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
 
     if @blog.save
-      redirect_to blogs_path
+      redirect_to user_blogs_path(current_user)
     else
       render :new
     end
@@ -31,7 +32,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.update(blog_params)
-      redirect_to blog_path(@blog)
+      redirect_to user_blog_path(current_user, @blog)
     else
       render :edit
     end
@@ -39,7 +40,7 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    redirect_to blogs_path
+    redirect_to user_blogs_path(current_user)
   end
   
   private
