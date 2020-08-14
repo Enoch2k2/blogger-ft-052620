@@ -1,6 +1,6 @@
 <h1>Blogs</h1>
 
-<%= form_tag(user_blogs_path(current_user)) do %>
+<%= form_tag(user_blogs_path(current_user), method: "get") do %>
   <%= text_field_tag :term, nil,  id: "Search", placeholder: "enter search term" %>
 
   <%= submit_tag "Search"%>

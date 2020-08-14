@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :blogs
   end
 
+  get "/auth/github/callback", to: "sessions#github"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # # index

@@ -14,6 +14,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def github
+    user = User.find_or_create_from_omniauth(auth)
+    session[:user_id] = user.id
+    redirect_to root_path
+  end
+
 
   def destroy
     session.clear
@@ -23,5 +29,9 @@ class SessionsController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:email, :password)
+    end
+
+    def auth
+      request.env["omniauth.auth"]
     end
 end

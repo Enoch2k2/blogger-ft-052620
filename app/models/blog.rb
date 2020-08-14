@@ -7,6 +7,7 @@ class Blog < ApplicationRecord
   scope :sorted_published_blogs, -> { self.published.order(published_date: :desc)}
   scope :sorted_non_published_blogs, -> { self.non_published.order(published_date: :desc)}
   scope :search, -> (term) { self.sorted_published_blogs.where("title LIKE ?", "%#{term}%") }
+
   # def self.published
   #   where.not(published_date: nil)
   # end
